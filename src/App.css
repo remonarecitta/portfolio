@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+  background-color: #23252C;
+}
+
+.App-logo {
+  height: 170px;
+  pointer-events: none;
+  border-radius: 10px;
+  width: 185px;
+}
+
+.main-div{
+background-color: #121316;
+width: 248px;
+}
+.main-div h5{
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+.header{
+  position: absolute;
+  width: 220px;
+  height: 101px;
+  left: 445px;
+  top: 405px;
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+}
+.interest{
+    position: absolute;
+    width: 220px;
+    height: 101px;
+    left: 450px;
+    top: 505px;
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+  }
+
+.title{
+  color: orange;
+  font-size:x-small;
+  padding-top: 0;
+  margin-top: 0;
+  height: 250px;
+}
+.about-content{
+  position: absolute;
+  width: 220px;
+  height: 101px;
+  left: 521px;
+  top: 436px;
+  color: white;
+  font-size: small;
+}
+.footer{
+  background-color: #121316;
+}
+.interest-content{
+  position: absolute;
+  width: 220px;
+  height: 101px;
+  left: 521px;
+  top: 536px;
+  color: white;
+  font-size: small;
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 120px;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.email{
+  box-sizing: border-box;
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 9px 13px 9px 11px;
+gap: 8px;
+
+position: absolute;
+width: 95px;
+height: 30px;
+left: 530px;
+top: 368px;
+background: #FFFFFF;
+/* gray/300 */
+
+border: 1px solid #D1D5DB;
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+border-radius: 6px;
+}
+.linkedin{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 9px 13px 9px 11px;
+gap: 8px;
+
+position: absolute;
+width: 95px;
+height: 30px;
+left: 643px;
+top: 368px;
+
+background: #5093E2;
+/* shadow/sm */
+box-shadow: 0px 1px 2px #5093E2;
+border-radius: 6px;
+border:#5093E2;
+}
