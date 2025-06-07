@@ -1,0 +1,68 @@
+.menu_component {
+  position: fixed;
+  top: 2rem;
+  right: 5rem;
+  z-index: 999;
+  display: flex;
+  gap: 0.6rem;
+  opacity: 1;
+  overflow: visible;
+  flex-direction: row-reverse; /* 👈 ensures Menu is rightmost */
+}
+
+.menu-pill {
+  background-color: #0754A3 ;
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: 'Dancing Script', cursive !important;
+  font-size: 1rem;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: background 0.3s ease, transform 0.3s ease; /* Add transition for transform */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+}
+
+.menu-pill:hover {
+  background-color: #333;
+  transform: scale(1.2); /* Scale up by 10% */
+}
+
+.menu-pill.is-closed {
+  width: 5rem;
+  overflow: hidden;
+}
+
+.menu-pill.is-menu {
+width: 5rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.menu-pill:not(.is-menu):not(.is-closed) {
+  width: auto;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-pill.is-menu.is-closed {
+  pointer-events: auto;
+}
+.menu-p {
+  margin: 0; /* Removes any default margins */
+  padding: 0; /* Removes any default padding */
+  font-size: 1.1rem; /* Adjust the font size for the text */
+  font-weight: normal; /* Change font weight if needed */
+  color: #fff; /* Ensure text is white */
+  white-space: nowrap; /* Prevent the text from wrapping */
+  text-decoration: none; /* Removes the underline */
+
+}

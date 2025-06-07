@@ -1,0 +1,97 @@
+.skills-section {
+  position: relative;
+  width: 100%;
+  background-color: #E2E19D;
+  color: white;
+  margin-top: 100px;
+}
+.title{
+  color: #CA793A;
+  margin-left: 200px;
+  padding-top: 50px;
+  margin-right: 50px;
+}
+
+.skill-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.skill-desc {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #ccc;
+  text-align: center;
+  word-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+  padding: 0 0.5rem;
+}
+
+.sticky-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.scroll-bttn {
+  position: absolute;
+  bottom: 90px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 100; /* Ensure it's above other elements */
+}
+
+.scroll-btn.skill-scroll {
+  position: absolute;
+  bottom: 40px;    
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.skills-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  padding: 2rem 0;
+}
+
+.skills-spacer {
+  min-width: 50vw;
+  padding-left: 50%;
+}
+
+.skill-card {
+  width: 350px; /* fixed width */
+  height: 460px;
+  flex: 0 0 auto;
+  background: #222;
+  padding: 2rem 2.5rem;
+  margin-right: 1.5rem;
+  border-radius: 12px;
+  font-size: 3px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  text-align: center;
+  display: flex;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  gap: 0.75rem;
+}
+
+.skill-icon {
+  width: 200px;
+  height: 150px;
+  object-fit: contain;
+  padding-bottom: 1rem;
+}

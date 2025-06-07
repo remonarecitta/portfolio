@@ -1,66 +1,108 @@
-import { useState, useEffect } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import logo from '../assets/img/logo.svg';
-import navIcon1 from '../assets/img/nav-icon1.svg';
-import navIcon2 from '../assets/img/nav-icon2.svg';
-import navIcon3 from '../assets/img/nav-icon3.svg';
-import { HashLink } from 'react-router-hash-link';
-import {
-  BrowserRouter as Router
-} from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import Flip from "gsap/Flip";
+import './NavBar.css';
 
-export const NavBar = () => {
+gsap.registerPlugin(Flip);
 
-  const [activeLink, setActiveLink] = useState('home');
-  const [scrolled, setScrolled] = useState(false);
+const MENU_ITEMS = [
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "About", href: "#about" },
+  { label: "Home", href: "#home" },
+];
+
+const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(true);
+  const menuRef = useRef(null);
+  const pillsRef = useRef([]);
 
   useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+    pillsRef.current.forEach((pill, index) => {
+      if (pill && index !== 0) {
+        gsap.set(pill, {
+          width: "5rem",
+          opacity: 0,
+        });
       }
+    });
+
+    const pillHeight = pillsRef.current[1]?.offsetHeight || 0;
+    if (menuRef.current) {
+      menuRef.current.style.height = `${pillHeight}px`;
     }
+  }, []);
 
-    window.addEventListener("scroll", onScroll);
+  const openMenu = () => {
+    const state = Flip.getState(pillsRef.current.filter(Boolean), {
+      props: "opacity,margin,padding,width",
+    });
 
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [])
+    pillsRef.current.forEach((pill, index) => {
+      if (pill && index !== 0) {
+        gsap.set(pill, {
+          width: "auto",
+          opacity: 1,
+        });
+      }
+    });
 
-  const onUpdateActiveLink = (value) => {
-    setActiveLink(value);
-  }
+    setIsOpen(false);
+
+    Flip.from(state, {
+      duration: 0.6,
+      ease: "power5.inOut",
+    });
+  };
+
+  const closeMenu = () => {
+    const state = Flip.getState(pillsRef.current.filter(Boolean), {
+      props: "opacity,margin,padding,width",
+    });
+
+    pillsRef.current.forEach((pill, index) => {
+      if (pill && index !== 0) {
+        gsap.set(pill, {
+          width: "5rem",
+          opacity: 0,
+        });
+      }
+    });
+
+    setIsOpen(true);
+
+    Flip.from(state, {
+      duration: 0.6,
+      ease: "power5.inOut",
+    });
+  };
 
   return (
-    <Router>
-      <Navbar className='navbar' expand="md">
-        <Container>
-          {/* <Navbar.Brand href="/">
-            <img src={logo} alt="Logo" />
-          </Navbar.Brand> */}
-          <Navbar.Toggle aria-controls="basic-navbar-nav">
-            <span className="navbar-toggler-icon"></span>
-          </Navbar.Toggle>
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-              <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-              <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
-              <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
-            </Nav>
-            <span className="navbar-text">
-              {/* <div className="social-icon">
-                <a href="#"><img src={navIcon1} alt="" /></a>
-                <a href="#"><img src={navIcon2} alt="" /></a>
-                <a href="#"><img src={navIcon3} alt="" /></a>
-              </div> */}
-              <HashLink to='#connect'>
-                <button className="vvd"><span>Let’s Connect</span></button>
-              </HashLink>
-            </span>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </Router>
-  )
-}
+    <div
+      className="menu_component"
+      ref={menuRef}
+      onMouseEnter={openMenu}
+      onMouseLeave={closeMenu}
+    >
+      <div
+        className="menu-pill is-menu"
+        ref={(el) => (pillsRef.current[0] = el)}
+      >
+    {isOpen? <span className="menu-p">{"Menu"}</span>: <span onClick={closeMenu} className="menu-p">{"x"}</span>}
+      </div>
+      {MENU_ITEMS.map((item, index) => (
+        <div
+          key={item.label}
+          className={`menu-pill ${isOpen ? "" : "is-closed"}`}
+          ref={(el) => (pillsRef.current[index + 1] = el)}
+        >
+          <a href={item.href} className="menu-p">
+            {item.label}
+          </a>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default NavBar;

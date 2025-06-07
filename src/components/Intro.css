@@ -1,0 +1,33 @@
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.intro-text {
+  color: white;
+  font-size: 4rem;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hey-text {
+  font-size: 4rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Optional: Add a subtle glow effect like Apple's */
+.apple-style-hey {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}

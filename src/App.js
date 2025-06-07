@@ -1,79 +1,95 @@
-import logo from './logo.svg';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { NavBar } from "./components/NavBar";
-import { Banner } from "./components/Banner";
-import { Skills } from "./components/Skills";
-import { Projects } from "./components/Projects";
-import { Contact } from "./components/Contact";
-import { Footer } from "./components/Footer";
-import { useEffect, useState } from 'react';
-import {motion} from 'framer-motion';
-import { About } from './components/About';
+    import './App.css';
+    import 'bootstrap/dist/css/bootstrap.min.css';
+    import  NavBar from "./components/NavBar";
+    import { Banner } from "./components/Banner";
+    import { Skills } from "./components/Skills";
+    import { Projects } from "./components/Projects";
+    import { Contact } from "./components/Contact";
+    import { Footer } from "./components/Footer";
+    import { useEffect, useState } from 'react';
+    import {motion} from 'framer-motion';
+    import { About } from './components/About';
+    import Intro from './components/Intro';
+    import { AnimatePresence } from 'framer-motion';
 
-function App() {
-  const [mousePosition, setMousePosition] = useState({
-    x:0,
-    y:0
-  });
-  const [cursorVariant, setcursorVariant] = useState("default");
+    function App() {
+      const [mousePosition, setMousePosition] = useState({
+        x:0,
+        y:0
+      });
+      const [cursorVariant, setcursorVariant] = useState("default");
+      const [introDone, setIntroDone] = useState(false);
 
-  useEffect(()=>{
-const mouseMove = (e) =>{
-  setMousePosition({
-    x:e.clientX,
-    y:e.clientY
-  });
+      useEffect(()=>{
+        const mouseMove = (e) =>{
+        setMousePosition({
+          x:e.clientX,
+          y:e.clientY
+        });
+        }
+        window.addEventListener("mousemove", mouseMove);
+          return () => {
+           window.removeEventListener('mousemove', mouseMove)
+        }
+      },[])
 
-}
-window.addEventListener("mousemove", mouseMove);
-return () => {
-  window.removeEventListener('mousemove', mouseMove)
-}
-  },[])
+      const variants = {
+        default:{
+          x: mousePosition.x - 16,
+          y:mousePosition.y - 16,
+          transition: {
+            type: "smooth",
+            duration: 0.1,
+          },
+        },
+        text: {
+          height: 90,
+          width: 90,
+          x: mousePosition.x - 76,
+          y:mousePosition.y - 76,
+          backgroundColor: "red",
+        mixBlendMode: "difference",
+          transition: {
+            type: "smooth",
+            duration: 0.1,
+          },
+        }
+      }
+      //to do add download resume button
 
-  const variants = {
-    default:{
-      x: mousePosition.x - 16,
-      y:mousePosition.y - 16,
-      transition: {
-        type: "smooth",
-        duration: 0.1,
-      },
-    },
-    text: {
-      height: 90,
-      width: 90,
-      x: mousePosition.x - 76,
-      y:mousePosition.y - 76,
-      backgroundColor: "red",
-    mixBlendMode: "difference",
-      transition: {
-        type: "smooth",
-        duration: 0.1,
-      },
+      const textEnter = () => {
+        setcursorVariant("text")
+      }
+
+      const textLeave = () =>{
+        setcursorVariant("default")
+      }
+      return (
+        <div className="App">
+          <AnimatePresence mode="wait">
+      {!introDone && (
+        <Intro
+          onComplete={() => {
+            setIntroDone(true);
+          }}
+          onIntroExit={() => setIntroDone(true)}
+        />
+      )}
+    </AnimatePresence>
+
+          {introDone && (
+            <>
+          <NavBar />
+          <motion.div className='cursor' variants={variants} animate={cursorVariant}></motion.div>
+          <Banner textEnter={textEnter} textLeave={textLeave} introDone={introDone}/>
+          <About/>
+          <Skills />
+          <Projects />
+          <Contact />
+          <Footer />
+          </>)}
+        </div>
+      );
     }
-  }
 
-  const textEnter = () =>{
-    setcursorVariant("text")
-  }
-
-  const textLeave = () =>{
-    setcursorVariant("default")
-  }
-  return (
-    <div className="App">
-      <NavBar />
-      <motion.div className='cursor' variants={variants} animate={cursorVariant}></motion.div>
-      <Banner textEnter={textEnter} textLeave={textLeave} />
-      <About/>
-      {/* <Skills /> */}
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
-  );
-}
-
-export default App;
+    export default App;
