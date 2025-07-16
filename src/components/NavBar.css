@@ -7,7 +7,9 @@
   gap: 0.6rem;
   opacity: 1;
   overflow: visible;
-  flex-direction: row-reverse; /* 👈 ensures Menu is rightmost */
+  flex-direction: row-reverse; 
+  position: sticky;
+  padding-right: 30px;
 }
 
 .menu-pill {
@@ -28,6 +30,7 @@
   overflow: hidden;
   width: 0;
   opacity: 0;
+  gap:1.5rem;
 }
 
 .menu-pill:hover {
@@ -59,7 +62,7 @@ width: 5rem;
 .menu-p {
   margin: 0; /* Removes any default margins */
   padding: 0; /* Removes any default padding */
-  font-size: 1.1rem; /* Adjust the font size for the text */
+  font-size: 1.4rem; /* Adjust the font size for the text */
   font-weight: normal; /* Change font weight if needed */
   color: #fff; /* Ensure text is white */
   white-space: nowrap; /* Prevent the text from wrapping */

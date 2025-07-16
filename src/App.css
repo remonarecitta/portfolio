@@ -146,10 +146,48 @@ span.navbar-text {
 }
 
 /************ Banner Css ************/
+.scroll-anchor {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #aaa;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dot:hover {
+  background: #db5e1c;
+  transform: scale(1.2);
+}
+
+.dot.active {
+  background: #db5e1c;
+  box-shadow: 0 0 10px #db5e1c;
+}
+
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: #db5e1c;
+  z-index: 9999;
+  transition: width 0.25s ease-out;
+}
 
 .scroll-btn {
   position: absolute;
-  bottom: 100px; /* Adjust as needed */
+  bottom: 90px; /* Adjust as needed */
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
@@ -247,7 +285,7 @@ span.navbar-text {
 }
 .banner .summary{
   color: #D57438;
-  font-size: 26px;
+  font-size: 30px;
 }
 
 .banner-links {
@@ -256,24 +294,52 @@ span.navbar-text {
   margin-top: 20px;
   flex-wrap: wrap;
 }
-
 .banner-btn {
-  display: flex;
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: #0754A3 ;
+  background-color: #0754A3;
   color: #fff;
   padding: 10px 16px;
   border-radius: 8px;
   text-decoration: none;
+  font-size: 20px;
   font-weight: 600;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.banner-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-20deg);
+}
+
+.banner-btn:hover::before {
+  animation: shine 0.75s forwards;
+}
+
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
 }
 
 .banner-btn:hover {
-  color: white;
   transform: scale(1.05);
+  background-color: #db5e1c; /* OR any contrast color */
+  color: #000; /* Change to black or another bright color for better visibility */
 }
+
 
 .banner-btn i {
   font-size: 1.3rem;
@@ -328,13 +394,18 @@ span.navbar-text {
   font-size: large;
 }
 /************ Skills Css ************/
+.term-about{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
 .skill {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  position: relative;
   text-align: center;
   padding: 0 20px;
 }
@@ -346,6 +417,7 @@ span.navbar-text {
   max-width: 800px;
   margin: 0 auto;
   padding: 50px 60px;
+  gap: 5rem;
 }
 .skill h2 {
   font-size: 45px;
@@ -353,10 +425,10 @@ span.navbar-text {
 }
 .skill p {
     color: #B8B8B8;
-    font-size: 22px;
+    font-size: 24px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
-    margin: 20px 0 75px 0;
+    margin: 20px 0 5px 0;
 }
 .skill-slider {
   width: 80%;
@@ -379,7 +451,7 @@ span.navbar-text {
 .project {
   padding: 80px 0;
   position: relative;
-  background-color: black;
+  height: 100vh;
 }
 .project h2 {
   font-size: 45px;
@@ -387,119 +459,44 @@ span.navbar-text {
   text-align: center;
 }
 .project p {
-  color: #B8B8B8;
-  font-size: 18px;
+  color: #D57438 !important;
+  font-size: 22px;
   letter-spacing: 0.8px;
   line-height: 1.5em;
   margin: 14px auto 30px auto;
   text-align: center;
-  width: 56%;
+  width: 66%;
 }
-.project .nav.nav-pills {
-  width: 72%;
-  margin: 0 auto;
-  border-radius: 50px;
-  background-color: rgb(255 255 255 / 10%);
-  overflow: hidden;
-}
-.project .nav.nav-pills .nav-item {
-  width: 33.33333%;
-}
-.project .nav.nav-pills .nav-link {
-  background-color: transparent;
-  border-radius: 0;
-  padding: 17px 0;
-  color: #fff;
-  width: 100%;
-  font-size: 17px;
-  letter-spacing: 0.8px;
-  font-weight: 500;
-  position: relative;
-  transition: 0.3s ease-in-out;
-  text-align: center;
-  z-index: 0;
-}
-.project .nav.nav-pills .nav-link::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 100%;
-    background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: 0.3s ease-in-out;
-}
-.project .nav.nav-pills .nav-link.active::before {
-    width: 100% !important;
-}
-.project .nav.nav-pills .nav-link.active {
-    border: 1px solid rgba(255, 255, 255, 1);
-}
-.nav-link#projects-tabs-tab-first {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 55px 0px 0px 55px;
-}
-.nav-link#projects-tabs-tab-second {
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-}
-.nav-link#projects-tabs-tab-third {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 0 55px 55px 0;
-}
-.proj-imgbx {
-  position: relative;
-  border-radius: 30px;
-  overflow: hidden;
-  margin-bottom: 24px;
-}
-.proj-imgbx::before {
-  content: "";
-  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
-  opacity: 0.85;
-  position: absolute;
-  width: 100%;
-  height: 0;
-  transition: 0.4s ease-in-out;
-}
-.proj-imgbx:hover::before {
-  height: 100%;
-}
-.proj-txtx {
-  position: absolute;
-  text-align: center;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: 0.5s ease-in-out;
-  opacity: 0;
-  width: 100%;
-}
-.proj-imgbx:hover .proj-txtx {
-  top: 50%;
+
+.project-card:hover .proj-overlay {
   opacity: 1;
 }
-.proj-txtx h4 {
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  line-height: 1.1em;
+.proj-overlay h4 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
-.proj-txtx span {
-  font-style: italic;
-  font-weight: 400;
-  font-size: 15px;
-  letter-spacing: 0.8px;
+
+.proj-overlay p {
+  font-size: 16px;
+  margin-bottom: 15px;
 }
-.background-image-right {
-  top: 20%;
-  position: absolute;
-  bottom: 0;
-  width: 35%;
-  right: 0;
-  z-index: -4;
+
+.proj-overlay button {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
+.proj-overlay button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
 
 /************ Projects Css ************/
 .contact {
@@ -576,79 +573,22 @@ span.navbar-text {
 /************ Footer Css ************/
 .footer {
   padding: 0 0 50px 0;
-  background-image: url('./assets/img/footer-bg.png');
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.newsletter-bx {
-  background: #FFFFFF;
-  border-radius: 55px;
-  color: #121212;
-  padding: 85px 125px;
-  margin-bottom: 80px;
-  margin-top: -122px;
-}
-.newsletter-bx h3 {
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  line-height: 1.2em;
-}
-.new-email-bx {
-  background: #fff;
-  padding: 5px;
-  border-radius: 20px;
-  position: relative;
-  z-index: 0;
   display: flex;
+  justify-content: center;
   align-items: center;
-}
-.new-email-bx::before {
-  content: "";
-  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
-  border-radius: 20px;
-  position: absolute;
-  z-index: -1;
-  top: -1px;
-  left: -1px;
-  bottom: -1px;
-  right: -1px;
-}
-.new-email-bx::after {
-  content: "";
-  background: #fff;
-  border-radius: 20px;
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-.new-email-bx input {
-  width: 100%;
-  color: #121212;
-  font-weight: 500;
-  background: transparent;
-  border: 0;
-  padding: 0 15px;
-}
-.new-email-bx button {
-  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
-  padding: 20px 65px;
-  color: #fff;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  border-radius: 18px;
+  background-repeat: no-repeat;
+  color: #0754A3;
 }
 .footer img {
-  width: 26%;
+  width: 35%;
 }
 .footer p {
   font-weight: 400;
-  font-size: 14px;
-  color: #B8B8B8;
+  font-size: 18px;
   letter-spacing: 0.5px;
   margin-top: 20px;
 }
 
+.glitch:hover {
+  animation: glitch 0.3s linear infinite;
+}

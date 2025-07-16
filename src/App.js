@@ -11,6 +11,11 @@
     import { About } from './components/About';
     import Intro from './components/Intro';
     import { AnimatePresence } from 'framer-motion';
+import { DeveloperJourney } from './components/DeveloperJourney';
+import Terminal from './components/Terminal';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ScrollAnchor from './components/ScrollAnchor';
+import ScrollProgress from './components/ScrollProgress';
 
     function App() {
       const [mousePosition, setMousePosition] = useState({
@@ -80,12 +85,14 @@
           {introDone && (
             <>
           <NavBar />
+          {/* <ScrollAnchor/> */}
+          <ScrollProgress/>
           <motion.div className='cursor' variants={variants} animate={cursorVariant}></motion.div>
           <Banner textEnter={textEnter} textLeave={textLeave} introDone={introDone}/>
           <About/>
           <Skills />
           <Projects />
-          <Contact />
+          <DeveloperJourney/>
           <Footer />
           </>)}
         </div>

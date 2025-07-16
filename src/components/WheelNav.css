@@ -1,0 +1,49 @@
+.wheel-nav {
+  position: fixed;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+  z-index: 999;
+}
+
+.wheel {
+  width: 400px;
+  height: 100px;
+  transition: transform 0.2s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wheel-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.wheel-center {
+  position: absolute;
+  width: 200px;
+  height: 40px;
+  z-index: 2;
+  opacity: 0.5;
+}
+
+.wheel-center-icon {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 5px #db5e1c);
+  object-fit: contain;
+}
+
+.wheel-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+.wheel-dot:hover .wheel-icon {
+  transform: scale(1.2) rotate(10deg);
+}

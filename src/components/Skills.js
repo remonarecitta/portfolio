@@ -117,7 +117,8 @@
                   <h1 className="banner-name title">Skills</h1>
 
       {skills.map((skill, index) => (
-        <motion.div className="skill-card" key={index} whileHover={{ scale: 1.1 }}>
+        <motion.div className="skill-card" key={index} whileHover={{ scale: 1.05, rotateY: 10 }}
+        transition={{ type: 'spring', stiffness: 300 }}>
           <img src={skill.icon} alt={skill.name} className="skill-icon" />
           <span className="skill-title">{skill.name}</span>
           <span className="skill-desc">{skill.desc1}</span>
@@ -125,16 +126,15 @@
         </motion.div>
       ))}
 
-
         <div className="skills-spacer" />
         </motion.div>
-        <div className="scroll-bttn">
+        {/* <div className="scroll-bttn">
           <a href="#projects">
             <div className="mouse">
               <span></span>
             </div>
           </a>
-        </div>
+        </div> */}
         
         </div>
         

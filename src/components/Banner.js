@@ -6,7 +6,7 @@
   import TrackVisibility from 'react-on-screen';
   import VanillaTilt from 'vanilla-tilt';
   import { motion } from 'framer-motion';
-  import resume from '../assets/Remona - Software Engineer- 5.pdf';
+  import resume from '../assets/Remona-Software Engineer Resume (1).pdf';
 
   export const Banner = ({ textEnter, textLeave }) => {
     const [loopNum, setLoopNum] = useState(0);
@@ -97,7 +97,7 @@
                     </div>
                   </h1>
                   <p className="summary">Crafting digital experiences that are not just functional, but intuitive and enjoyable.✨ </p>
-                  <div className="banner-links">
+                  <div className="banner-links ">
     <a href={resume} download className="banner-btn">
       <i className="fa fa-download" /> Resume
     </a>

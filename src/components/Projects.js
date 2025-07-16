@@ -1,7 +1,7 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
-import projImg1 from "../assets/img/project-img1.png";
-import projImg2 from "../assets/img/project-img2.png";
+import projImg1 from "../assets/img/threaddit.png";
+import projImg2 from "../assets/img/HP.png";
 import projImg3 from "../assets/img/project-img3.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
@@ -11,35 +11,23 @@ export const Projects = () => {
 
   const projects = [
     {
-      title: "Business Startup",
+      title: "ECommerce Website",
       description: "Design & Development",
       imgUrl: projImg1,
+      url: 'https://threaddit.netlify.app/'
     },
     {
-      title: "Business Startup",
+      title: "Javascript Game",
       description: "Design & Development",
       imgUrl: projImg2,
+      url: 'https://hp-memoryflip.netlify.app/'
     },
     {
       title: "Business Startup",
       description: "Design & Development",
       imgUrl: projImg3,
     },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
-    },
+    
   ];
 
   return (
@@ -49,11 +37,11 @@ export const Projects = () => {
           <Col size={12}>
             <TrackVisibility>
               {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
+              <div >
                 <h2>Projects</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>What I have done so far!</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
-                  <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
+                  {/* <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
                       <Nav.Link eventKey="first">Tab 1</Nav.Link>
                     </Nav.Item>
@@ -63,8 +51,8 @@ export const Projects = () => {
                     <Nav.Item>
                       <Nav.Link eventKey="third">Tab 3</Nav.Link>
                     </Nav.Item>
-                  </Nav>
-                  <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
+                  </Nav> */}
+                  <Tab.Content id="slideInUp" >
                     <Tab.Pane eventKey="first">
                       <Row>
                         {
@@ -92,7 +80,14 @@ export const Projects = () => {
           </Col>
         </Row>
       </Container>
-      <img className="background-image-right" src={colorSharp2}></img>
+      {/* <img className="background-image-right" src={colorSharp2}></img> */}    
+        {/* <div className="scroll-btn">
+        <a href="#projects">
+          <div className="mouse">
+            <span></span>
+          </div>
+        </a>
+      </div> */}
     </section>
   )
 }
