@@ -93,6 +93,7 @@ import ScrollProgress from './components/ScrollProgress';
           <Skills />
           <Projects />
           <DeveloperJourney/>
+          <Contact/>
           <Footer />
           </>)}
         </div>

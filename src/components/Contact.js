@@ -50,7 +50,12 @@ export const Contact = () => {
           <Col size={12} md={6}>
             <TrackVisibility>
               {({ isVisible }) =>
-                <img className={isVisible ? "animate__animated animate__zoomIn" : ""} src={contactImg} alt="Contact Us"/>
+                // <img className={isVisible ? "animate__animated animate__zoomIn" : ""} src={contactImg} alt="Contact Us"/>
+                <>
+                  <p>I'm always excited to get onboard on new ideas, freelance projects or full-time roles. Let's connect and build something cool!</p>
+                  <h3>Phone: +91-8056276393</h3>
+                  <h3>Email: remonareci@gmail.com</h3>
+                  </>
               }
             </TrackVisibility>
           </Col>

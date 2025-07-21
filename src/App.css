@@ -19,6 +19,7 @@ body {
   position: relative;
   color: #D57438 !important;
   font-family: 'Dancing Script', cursive !important;
+  /* font-family; !important;  */
   background-color: rgb(226, 225, 157) !important;
 }
 
@@ -449,28 +450,55 @@ span.navbar-text {
 
 /************ Projects Css ************/
 .project {
-  padding: 80px 0;
   position: relative;
   height: 100vh;
 }
 .project h2 {
-  font-size: 45px;
+  font-size: 55px;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
 }
 .project p {
   color: #D57438 !important;
-  font-size: 22px;
+  font-size: 28px;
   letter-spacing: 0.8px;
   line-height: 1.5em;
-  margin: 14px auto 30px auto;
-  text-align: center;
+  /* margin: 14px auto 30px auto; */
+  text-align: left;
   width: 66%;
 }
 
 .project-card:hover .proj-overlay {
   opacity: 1;
 }
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: black;
+  transition: box-shadow 0.3s;
+}
+
+.project-card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.proj-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(219, 94, 28, 0.8);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .proj-overlay h4 {
   font-size: 24px;
   font-weight: bold;
@@ -500,7 +528,6 @@ span.navbar-text {
 
 /************ Projects Css ************/
 .contact {
-  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
   padding: 60px 0 200px 0;
 }
 .contact img {
@@ -514,9 +541,9 @@ span.navbar-text {
 .contact form input, .contact form textarea {
   width: 100%;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(210, 120, 71, 0.8);
   border-radius: 20px;
-  color: #fff;
+  color: rgba(219, 94, 28, 0.8);
   margin: 0 0 8px 0;
   padding: 18px 26px;
   font-weight: 500;
@@ -524,14 +551,22 @@ span.navbar-text {
   letter-spacing: 0.8px;
   transition: 0.3s ease-in-out;
 }
-.contact form input:focus, .contact form textarea:focus {
-  background: rgba(255, 255, 255, 1);
-  color: #121212;
+.contact form input:focus,
+.contact form textarea:focus {
+  color: rgba(219, 94, 28, 1);         /* solid orange text */
+  border: 2px solid rgba(219, 94, 28, 0.8);
+  box-shadow: 0 0 8px rgba(219, 94, 28, 0.3);
+  outline: none;
 }
+.contact form input:focus::placeholder,
+.contact form textarea:focus::placeholder {
+  color: rgba(219, 94, 28, 0.6);
+}
+
 .contact form input::placeholder, .contact form textarea::placeholder {
   font-size: 16px;
   font-weight: 400;
-  color: #fff;
+  color: rgba(219, 94, 28, 0.8);
 }
 .contact form input:focus::placeholder, .contact form textarea:focus::placeholder {
   color: #121212;
@@ -540,7 +575,7 @@ span.navbar-text {
 .contact form button {
   font-weight: 700;
   color: #000;
-  background-color: #fff;
+  background-color: rgba(219, 94, 28, 0.8);
   padding: 14px 48px;
   font-size: 18px;
   margin-top: 25px;

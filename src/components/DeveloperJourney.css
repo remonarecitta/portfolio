@@ -5,9 +5,10 @@
 }
 
 .journey-title {
-  text-align: center;
+  text-align: left;
+  padding-left: 200px;
   color: #db5e1c;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 600;
   margin-bottom: 4rem;
 }

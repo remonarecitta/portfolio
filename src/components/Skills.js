@@ -19,7 +19,7 @@
     const sectionRef = useRef(null);
     const trackRef = useRef(null);
     const [scrollableWidth, setScrollableWidth] = useState(0);
-    const [sectionHeight, setSectionHeight] = useState("100vh");
+    const [sectionHeight, setSectionHeight] = useState("auto");
     const [isHorizontalScrollActive, setIsHorizontalScrollActive] = useState(false);
 
     const { scrollYProgress } = useScroll({
@@ -37,7 +37,7 @@
         const windowWidth = window.innerWidth;
         const scrollable = fullWidth - windowWidth;
         setScrollableWidth(scrollable);
-        setSectionHeight(`${scrollable + window.innerHeight}px`);
+        setSectionHeight(`${scrollable + 100}px`);
       };
 
       handleResize();
@@ -111,18 +111,19 @@
         ref={sectionRef}
         style={{ height: sectionHeight }}
       >
-        <div className="sticky-wrapper">
+        <div className="sticky-wrapper"> 
+               <h1 className="skills-title">Skills</h1>
+
           <motion.div className="skills-track" ref={trackRef} style={{ x }}>
-            <div className="skills-spacer" />
-                  <h1 className="banner-name title">Skills</h1>
+            <div className="skills-spacer" />    
 
       {skills.map((skill, index) => (
         <motion.div className="skill-card" key={index} whileHover={{ scale: 1.05, rotateY: 10 }}
         transition={{ type: 'spring', stiffness: 300 }}>
           <img src={skill.icon} alt={skill.name} className="skill-icon" />
           <span className="skill-title">{skill.name}</span>
-          <span className="skill-desc">{skill.desc1}</span>
-          <span className="skill-desc">{skill.desc2}</span>
+          {/* <span className="skill-desc">{skill.desc1}</span>
+          <span className="skill-desc">{skill.desc2}</span> */}
         </motion.div>
       ))}
 

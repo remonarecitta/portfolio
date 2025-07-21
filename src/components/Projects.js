@@ -9,26 +9,25 @@ import TrackVisibility from 'react-on-screen';
 
 export const Projects = () => {
 
-  const projects = [
-    {
-      title: "ECommerce Website",
-      description: "Design & Development",
-      imgUrl: projImg1,
-      url: 'https://threaddit.netlify.app/'
-    },
-    {
-      title: "Javascript Game",
-      description: "Design & Development",
-      imgUrl: projImg2,
-      url: 'https://hp-memoryflip.netlify.app/'
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
-    },
-    
-  ];
+const projects = [
+  {
+    title: "ECommerce Website",
+    description: "A full-stack shopping site with authentication and checkout",
+    imgUrl: projImg1,
+    tech: ["React", "Redux", "Node.js"],
+    url: "https://threaddit.netlify.app/",
+    codeUrl: "https://github.com/remona/ecom"
+  },
+  {
+    title: "Javascript Game",
+    description: "A Harry Potter memory flip card game",
+    imgUrl: projImg2,
+    tech: ["JavaScript", "HTML", "CSS"],
+    url: "https://hp-memoryflip.netlify.app/",
+    codeUrl: "https://github.com/remona/hp-memory"
+  }
+];
+
 
   return (
     <section className="project" id="projects">
@@ -54,7 +53,7 @@ export const Projects = () => {
                   </Nav> */}
                   <Tab.Content id="slideInUp" >
                     <Tab.Pane eventKey="first">
-                      <Row>
+                      <Row className="justify-content-center">
                         {
                           projects.map((project, index) => {
                             return (
@@ -68,9 +67,6 @@ export const Projects = () => {
                       </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="section">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="third">
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
                     </Tab.Pane>
                   </Tab.Content>

@@ -3,7 +3,6 @@
   width: 100%;
   background-color: #E2E19D;
   color: white;
-  margin-top: 100px;
 }
 .title{
   color: #CA793A;
@@ -17,7 +16,17 @@
   font-weight: bold;
   color: #fff;
 }
-
+.skills-title {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  font-size: 55px;
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+  color: #CA793A;
+  z-index: 10;
+  pointer-events: none; 
+}
 .skill-desc {
   font-size: 1.2rem;
   line-height: 1.5;
@@ -32,7 +41,7 @@
 .sticky-wrapper {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,8 +78,8 @@
 }
 
 .skill-card {
-  width: 350px; /* fixed width */
-  height: 460px;
+  width: auto; /* fixed width */
+  height: auto;
   flex: 0 0 auto;
   background: #222;
   padding: 2rem 2.5rem;
